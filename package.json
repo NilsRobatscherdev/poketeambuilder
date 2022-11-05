@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "description": "Stencil App Starter",
+  "types": "dist/types/components.d.ts",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
@@ -11,7 +12,8 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "2.13.0",
+    "@ionic/core": "^6.3.4",
+    "@stencil/core": "2.19.2",
     "@stencil/router": "^1.0.1",
     "@types/jest": "^27.0.3",
     "jest": "^27.4.5",
