@@ -19,16 +19,12 @@ export interface IItemHeldByPokemonVersionDetailsVersion {
 }
 export interface IItemName {
     name:string
-    language:{[key:string]:IItemNameLanguage}
-}
-export interface IItemNameLanguage {
-    name:string
-    url:string
+    language:{[key:string]:IItemNameAndUrl}
 }
 export interface IItemEffectEntries {
     effect:string
     short_effect:string
-    language:{[key:string]:IItemNameLanguage}
+    language:{[key:string]:IItemNameAndUrl}
 }
 export interface IItemFlavourTextEntries {
     text:string

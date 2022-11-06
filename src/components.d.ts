@@ -5,62 +5,85 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
 export namespace Components {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
+    }
+    interface PageFooter {
+    }
+    interface PageHeader {
+    }
+    interface PageNotFound {
+    }
+    interface PagePokedex {
     }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
-    }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLPageFooterElement extends Components.PageFooter, HTMLStencilElement {
+    }
+    var HTMLPageFooterElement: {
+        prototype: HTMLPageFooterElement;
+        new (): HTMLPageFooterElement;
+    };
+    interface HTMLPageHeaderElement extends Components.PageHeader, HTMLStencilElement {
+    }
+    var HTMLPageHeaderElement: {
+        prototype: HTMLPageHeaderElement;
+        new (): HTMLPageHeaderElement;
+    };
+    interface HTMLPageNotFoundElement extends Components.PageNotFound, HTMLStencilElement {
+    }
+    var HTMLPageNotFoundElement: {
+        prototype: HTMLPageNotFoundElement;
+        new (): HTMLPageNotFoundElement;
+    };
+    interface HTMLPagePokedexElement extends Components.PagePokedex, HTMLStencilElement {
+    }
+    var HTMLPagePokedexElement: {
+        prototype: HTMLPagePokedexElement;
+        new (): HTMLPagePokedexElement;
+    };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "page-footer": HTMLPageFooterElement;
+        "page-header": HTMLPageHeaderElement;
+        "page-not-found": HTMLPageNotFoundElement;
+        "page-pokedex": HTMLPagePokedexElement;
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
-    }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
     interface AppRoot {
     }
+    interface PageFooter {
+    }
+    interface PageHeader {
+    }
+    interface PageNotFound {
+    }
+    interface PagePokedex {
+    }
     interface IntrinsicElements {
-        "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "page-footer": PageFooter;
+        "page-header": PageHeader;
+        "page-not-found": PageNotFound;
+        "page-pokedex": PagePokedex;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
+            "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;
+            "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
+            "page-pokedex": LocalJSX.PagePokedex & JSXBase.HTMLAttributes<HTMLPagePokedexElement>;
         }
     }
 }

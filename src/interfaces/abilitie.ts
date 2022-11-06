@@ -5,8 +5,6 @@ export interface IPokemonAbility {
     url:string
 }
 
-
-
 export interface IAbilitie {
     is_hidden:boolean,
     slot: number,
