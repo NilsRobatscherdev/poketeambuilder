@@ -11,7 +11,7 @@ export class AppRoot {
         <page-header>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="page-pokedex" exact={true} />
+              <stencil-route url="/pokedex" component="page-pokedex" exact={true} />
               </stencil-route-switch>
           </stencil-router>
         </page-header>

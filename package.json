@@ -15,10 +15,14 @@
     "@ionic/core": "^6.3.4",
     "@stencil/core": "2.19.2",
     "@stencil/router": "^1.0.1",
+    "@stencil/sass": "^2.0.0",
     "@types/jest": "^27.0.3",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
     "puppeteer": "^19.2.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "rxjs": "^7.5.7"
+  }
 }
