@@ -1,8 +1,8 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'search-bar',
-  styleUrl: 'search-bar.css',
+  styleUrl: 'search-bar.scss',
 })
 export class SearchBar {
     onSearchPokemon(ev){
@@ -10,9 +10,7 @@ export class SearchBar {
   }
   render() {
     return (
-      <ion-toolbar>
-      <ion-searchbar onIonChange={(ev) => this.onSearchPokemon(ev)}></ion-searchbar>
-    </ion-toolbar>
+        <ion-searchbar class="custom" onIonChange={(ev) => this.onSearchPokemon(ev)}></ion-searchbar>
     );
   }
 

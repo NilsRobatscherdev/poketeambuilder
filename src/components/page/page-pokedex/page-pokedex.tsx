@@ -13,7 +13,7 @@ export class PagePokedex {
     pokemons: []
   })
   async componentWillLoad(){
-    PokedexService.getPokedex("https://pokeapi.co/api/v2/pokemon").then((pokedex) => {
+    PokedexService.getPokedex("https://pokeapi.co/api/v2/pokemon/?limit=24").then((pokedex) => {
       pokedex.results.map(pokemonList => {
         PokedexService.getPokedexPokemon(pokemonList.url).then((pokemon) =>{
           this.pokemon = pokemon
@@ -35,7 +35,7 @@ export class PagePokedex {
             {
           this.pokedex.pokemons.map(pokemon => {
                 return[
-                  <ion-col size="12" size-sm="4">
+                  <ion-col size="6" size-sm="3">
                   <pokemon-card pokemon={pokemon}/>
                   </ion-col>
                 ]
