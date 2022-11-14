@@ -12,43 +12,43 @@ export interface MoveOtherNames {
 }
 
 export interface IMoveMeta {
-    "min_hits": number,
-    "max_hits": number,
-    "min_turns": number,
-    "max_turns": number,
-    "drain": number,
-    "healing": number,
-    "crit_rate": number,
-    "ailment_chance": number,
-    "flinch_chance": number,
-    "stat_chance": number,
-    "category":{[key:string]:IMoveNameAndUrl},
-    "ailment":{[key:string]:IMoveNameAndUrl},
+    min_hits: number,
+    max_hits: number,
+    min_turns: number,
+    max_turns: number,
+    drain: number,
+    healing: number,
+    crit_rate: number,
+    ailment_chance: number,
+    flinch_chance: number,
+    stat_chance: number,
+    category:IMoveNameAndUrl,
+    ailment:IMoveNameAndUrl,
 }
 
 export interface IMoveContestCombosSuper {
-    "use_before":[],
-    "use_after":[],
+    use_before:[],
+    use_after:[],
 }
 export interface IMoveContestCombosNormal {
-    "use_before":[{[key:string]:IMoveNameAndUrl}],
-    "use_after":[],
+    use_before:[IMoveNameAndUrl],
+    use_after:[],
 }
 export interface IMoveContestCombos {
-    "normal":{[key:string]:IMoveContestCombosNormal},
-    "super":{[key:string]:IMoveContestCombosSuper},
+    normal:IMoveContestCombosNormal,
+    super:IMoveContestCombosSuper,
 }
 
 export interface IMoveEffectEntries {
-    "effect": string,
-    "short_effect": string,
-    "language":{[key:string]:IMoveNameAndUrl},
+    effect: string,
+    short_effect: string,
+    language:IMoveNameAndUrl,
 }
 
 export interface IMoveFlavourTextEntries {
-    "flavor_text": string,
-    "language":{[key:string]:IMoveNameAndUrl},
-    "version_group":{[key:string]:IMoveNameAndUrl},
+    flavor_text: string,
+    language:IMoveNameAndUrl,
+    version_group:IMoveNameAndUrl,
 }
 
 export interface IMove {
@@ -57,22 +57,22 @@ export interface IMove {
     accuracy: number,
     effect_chance:null,
     pp:number,
-    target:{[key:string]:IMoveNameAndUrl},
-    type:{[key:string]:IMoveNameAndUrl},
+    target:IMoveNameAndUrl,
+    type:IMoveNameAndUrl,
     learned_by_pokemon:IPokemon[],
     priority:number,
     power:number,
     past_values:[],
     stat_changes:[],
     effect_changes:[],
-    generationen:{[key:string]:IMoveNameAndUrl},
-    damage_class:{[key:string]:IMoveNameAndUrl},
-    contest_effect:{[key:string]:IMoveNameAndUrl},
-    contest_type:{[key:string]:IMoveNameAndUrl},
-    contest_combos:{[key:string]:IMoveContestCombos},
-    meta:{[key:string]:IMoveMeta}
-    effect_entries:[{[key:string]:IMoveMeta}]
-    flavor_text_entries:[{[key:string]:IMoveFlavourTextEntries}]
+    generationen:IMoveNameAndUrl,
+    damage_class:IMoveNameAndUrl,
+    contest_effect:IMoveNameAndUrl,
+    contest_type:IMoveNameAndUrl,
+    contest_combos:IMoveContestCombos,
+    meta:IMoveMeta
+    effect_entries:[IMoveMeta]
+    flavor_text_entries:[IMoveFlavourTextEntries]
 }
 
 export class Moves implements IMove, Deserializable {
@@ -81,22 +81,22 @@ export class Moves implements IMove, Deserializable {
     accuracy: number;
     effect_chance:null;
     pp:number;
-    target:{[key:string]:IMoveNameAndUrl};
-    type:{[key:string]:IMoveNameAndUrl};
+    target:IMoveNameAndUrl;
+    type:IMoveNameAndUrl;
     learned_by_pokemon:IPokemon[];
     priority:number;
     power:number;
     past_values:[];
     stat_changes:[];
     effect_changes:[];
-    generationen:{[key:string]:IMoveNameAndUrl};
-    damage_class:{[key:string]:IMoveNameAndUrl};
-    contest_effect:{[key:string]:IMoveNameAndUrl};
-    contest_type:{[key:string]:IMoveNameAndUrl};
-    contest_combos:{[key:string]:IMoveContestCombos};
-    meta:{[key:string]:IMoveMeta}
-    effect_entries:[{[key:string]:IMoveMeta}]
-    flavor_text_entries:[{[key:string]:IMoveFlavourTextEntries}]
+    generationen:IMoveNameAndUrl;
+    damage_class:IMoveNameAndUrl;
+    contest_effect:IMoveNameAndUrl;
+    contest_type:IMoveNameAndUrl;
+    contest_combos:IMoveContestCombos;
+    meta:IMoveMeta
+    effect_entries:[IMoveMeta]
+    flavor_text_entries:[IMoveFlavourTextEntries]
 
     deserialize(input: Moves){
         if(input){

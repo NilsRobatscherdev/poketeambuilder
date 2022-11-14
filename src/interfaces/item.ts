@@ -38,7 +38,7 @@ export interface IItemGameIndices {
 
 
 export interface IItem {
-    names:[{[key:string]:IItemName}],
+    names:[IItemName],
     cost: number,
     weight: number,
     height: number,
@@ -46,19 +46,19 @@ export interface IItem {
     is_default:boolean,
     location_area_encounters:string,
     base_experience:number,
-    category:{[key:string]:IItemNameAndUrl},
-    flavor_text_entries:{[key:string]:IItemFlavourTextEntries},
-    effect_entries:{[key:string]:IItemEffectEntries},
-    attributes:{[key:string]:IItemNameAndUrl},
-    held_by_pokemon:[{[key:string]:IItemHeldByPokemon}],
-    fling_effect:{[key:string]:IItemNameAndUrl},
+    category:IItemNameAndUrl,
+    flavor_text_entries:IItemFlavourTextEntries,
+    effect_entries:IItemEffectEntries,
+    attributes:IItemNameAndUrl,
+    held_by_pokemon:[IItemHeldByPokemon],
+    fling_effect:IItemNameAndUrl,
     baby_trigger_for:{url:string},
     sprites:{default:string};
-    game_indices:{[key:string]:IItemGameIndices},
+    game_indices:IItemGameIndices,
 }
 
 export class Item implements IItem, Deserializable {
-    names:[{[key:string]:IItemName}];
+    names:[IItemName];
     cost: number;
     weight: number;
     height: number;
@@ -67,13 +67,13 @@ export class Item implements IItem, Deserializable {
     location_area_encounters:string;
     base_experience:number;
     sprites:{default:string};
-    game_indices:{[key:string]:IItemGameIndices};
-    category:{[key:string]:IItemNameAndUrl};
-    flavor_text_entries:{[key:string]:IItemFlavourTextEntries};
-    effect_entries:{[key:string]:IItemEffectEntries};
-    attributes:{[key:string]:IItemNameAndUrl};
-    held_by_pokemon:[{[key:string]:IItemHeldByPokemon}];
-    fling_effect:{[key:string]:IItemNameAndUrl};
+    game_indices:IItemGameIndices;
+    category:IItemNameAndUrl;
+    flavor_text_entries:IItemFlavourTextEntries;
+    effect_entries:IItemEffectEntries;
+    attributes:IItemNameAndUrl;
+    held_by_pokemon:[IItemHeldByPokemon];
+    fling_effect:IItemNameAndUrl;
     baby_trigger_for:{url:string};
 
     deserialize(input: IItem){

@@ -1,20 +1,42 @@
-import { Component, h } from '@stencil/core';
+import { Component, ComponentInterface, h } from '@stencil/core';
+import { PageProcessService } from '../../services/pageProcess.service';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
 })
-export class AppRoot {
+export class AppRoot implements ComponentInterface {
+
+  private router: HTMLIonRouterElement
+
+
+
+  ionRouteDidChange(_event){
+    PageProcessService.stop()
+  }
+  ionRouteWillChange(_event){
+    PageProcessService.start()
+  }
+
+  renderRouter(){
+    return(
+    <ion-router
+      useHash={false}
+      ref={ref => this.router = ref}
+      root={"/"}
+      onIonRouteDidChange={(event) => this.ionRouteDidChange(event)}
+      onIonRouteWillChange={(event) => this.ionRouteWillChange(event)}
+    >
+      <ion-route url="/pokemon/:pokemonId" component="pokemon-detail" />
+      <ion-route url="/pokedex" component="page-pokedex" />
+    </ion-router>
+    )
+  }
   render() {
     return (
       <ion-app>
-        <page-header>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/pokedex" component="page-pokedex" exact={true} />
-              </stencil-route-switch>
-          </stencil-router>
-        </page-header>
+      {this.renderRouter()}
+         <ion-nav id='main-nav'></ion-nav>
       </ion-app>
     );
   }

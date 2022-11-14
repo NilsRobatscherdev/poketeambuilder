@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IPokemon } from "./interfaces/pokemon";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
     }
@@ -15,6 +17,19 @@ export namespace Components {
     interface PageNotFound {
     }
     interface PagePokedex {
+    }
+    interface PokemonCard {
+        "pokemon": IPokemon;
+    }
+    interface PokemonDetail {
+        "history": RouterHistory;
+        "match": MatchResults;
+        "name": number;
+    }
+    interface PokemonTypes {
+        "types": any;
+    }
+    interface SearchBar {
     }
 }
 declare global {
@@ -48,12 +63,40 @@ declare global {
         prototype: HTMLPagePokedexElement;
         new (): HTMLPagePokedexElement;
     };
+    interface HTMLPokemonCardElement extends Components.PokemonCard, HTMLStencilElement {
+    }
+    var HTMLPokemonCardElement: {
+        prototype: HTMLPokemonCardElement;
+        new (): HTMLPokemonCardElement;
+    };
+    interface HTMLPokemonDetailElement extends Components.PokemonDetail, HTMLStencilElement {
+    }
+    var HTMLPokemonDetailElement: {
+        prototype: HTMLPokemonDetailElement;
+        new (): HTMLPokemonDetailElement;
+    };
+    interface HTMLPokemonTypesElement extends Components.PokemonTypes, HTMLStencilElement {
+    }
+    var HTMLPokemonTypesElement: {
+        prototype: HTMLPokemonTypesElement;
+        new (): HTMLPokemonTypesElement;
+    };
+    interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
+    }
+    var HTMLSearchBarElement: {
+        prototype: HTMLSearchBarElement;
+        new (): HTMLSearchBarElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "page-footer": HTMLPageFooterElement;
         "page-header": HTMLPageHeaderElement;
         "page-not-found": HTMLPageNotFoundElement;
         "page-pokedex": HTMLPagePokedexElement;
+        "pokemon-card": HTMLPokemonCardElement;
+        "pokemon-detail": HTMLPokemonDetailElement;
+        "pokemon-types": HTMLPokemonTypesElement;
+        "search-bar": HTMLSearchBarElement;
     }
 }
 declare namespace LocalJSX {
@@ -67,12 +110,29 @@ declare namespace LocalJSX {
     }
     interface PagePokedex {
     }
+    interface PokemonCard {
+        "pokemon"?: IPokemon;
+    }
+    interface PokemonDetail {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+        "name"?: number;
+    }
+    interface PokemonTypes {
+        "types"?: any;
+    }
+    interface SearchBar {
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "page-footer": PageFooter;
         "page-header": PageHeader;
         "page-not-found": PageNotFound;
         "page-pokedex": PagePokedex;
+        "pokemon-card": PokemonCard;
+        "pokemon-detail": PokemonDetail;
+        "pokemon-types": PokemonTypes;
+        "search-bar": SearchBar;
     }
 }
 export { LocalJSX as JSX };
@@ -84,6 +144,10 @@ declare module "@stencil/core" {
             "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "page-pokedex": LocalJSX.PagePokedex & JSXBase.HTMLAttributes<HTMLPagePokedexElement>;
+            "pokemon-card": LocalJSX.PokemonCard & JSXBase.HTMLAttributes<HTMLPokemonCardElement>;
+            "pokemon-detail": LocalJSX.PokemonDetail & JSXBase.HTMLAttributes<HTMLPokemonDetailElement>;
+            "pokemon-types": LocalJSX.PokemonTypes & JSXBase.HTMLAttributes<HTMLPokemonTypesElement>;
+            "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
 }

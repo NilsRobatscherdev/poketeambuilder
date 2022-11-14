@@ -7,7 +7,7 @@ export interface IBerrieNameAndUrl {
 }
 export interface IBerrieFlavours {
     potency:number
-    flavor:{[key:string]:IBerrieNameAndUrl}
+    flavor:IBerrieNameAndUrl
 }
 
 export interface IBerrie {
@@ -19,10 +19,10 @@ export interface IBerrie {
     size:number,
     smoothness:number,
     soil_dryness:number,
-    firmness:{[key:string]:IBerrieNameAndUrl},
-    flavors:[{[key:string]:IBerrieFlavours}],
-    item:{[key:string]:IBerrieNameAndUrl},
-    natural_gift_type:{[key:string]:IBerrieNameAndUrl}
+    firmness:IBerrieNameAndUrl,
+    flavors:[IBerrieFlavours],
+    item:IBerrieNameAndUrl,
+    natural_gift_type:IBerrieNameAndUrl
 }
 
 export class Berrie implements IBerrie, Deserializable {
@@ -34,10 +34,11 @@ export class Berrie implements IBerrie, Deserializable {
     size:number;
     smoothness:number;
     soil_dryness:number;
-    firmness:{[key:string]:IBerrieNameAndUrl};
-    flavors:[{[key:string]:IBerrieFlavours}];
-    item:{[key:string]:IBerrieNameAndUrl};
-    natural_gift_type:{[key:string]:IBerrieNameAndUrl};
+    firmness:IBerrieNameAndUrl;
+    flavors:[IBerrieFlavours];
+    item:IBerrieNameAndUrl;
+    natural_gift_type:IBerrieNameAndUrl;
+
     deserialize(input: IBerrie){
         if(input){
             Object.assign(this,input);

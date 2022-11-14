@@ -1,6 +1,6 @@
 import { Component, h, State } from '@stencil/core';
-import { IPokedex } from '../../../interfaces/pokedex';
-import { IPokemon } from '../../../interfaces/pokemon';
+import { IPokedex, Pokedex } from '../../../interfaces/pokedex';
+import { IPokemon, Pokemon } from '../../../interfaces/pokemon';
 import { PokedexService } from '../../../services/pokedex.service';
 
 @Component({
@@ -8,30 +8,45 @@ import { PokedexService } from '../../../services/pokedex.service';
   styleUrl: 'page-pokedex.scss',
 })
 export class PagePokedex {
-
-  @State() pokedex: IPokedex[]
-  @State() pokemon: IPokemon
-
+  @State() pokemon: IPokemon = new Pokemon()
+  @State() pokedex: IPokedex = new Pokedex().deserialize({
+    pokemons: []
+  })
   async componentWillLoad(){
     PokedexService.getPokedex("https://pokeapi.co/api/v2/pokemon").then((pokedex) => {
- 
       pokedex.results.map(pokemonList => {
         PokedexService.getPokedexPokemon(pokemonList.url).then((pokemon) =>{
-            console.log(pokemon)
+          this.pokemon = pokemon
+          this.pokedex?.pokemons?.push(this.pokemon)
+          PokedexService.getPokedexPokemon(pokemon.species.url).then((japaneseName) =>{
+              pokemon.names = japaneseName.names
+          })
         })
       })
     })
-  
-
   }
-
+ 
   render() {
-    console.log(this.pokedex)
     return (
-        <div>
-          awd
-        </div>
-    );
+      <div>
+        <search-bar></search-bar>
+      <ion-grid>
+        <ion-row>
+            {
+          this.pokedex.pokemons.map(pokemon => {
+                return[
+                  <ion-col size="12" size-sm="4">
+                  <pokemon-card pokemon={pokemon}/>
+                  </ion-col>
+                ]
+            })
+          }
+    
+        </ion-row>
+      </ion-grid>
+
+      </div>
+      );
   }
 
 }
