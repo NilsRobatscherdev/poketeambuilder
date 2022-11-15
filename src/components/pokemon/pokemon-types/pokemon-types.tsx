@@ -13,7 +13,6 @@ export class PokemonTypes {
     this.imageSrc = getAssetPath(`/assets/types/${this.types}.svg`);
   }
   render() {
-    console.log(this.types)
     return (
         <img src={this.imageSrc} alt={this.types} />
     );

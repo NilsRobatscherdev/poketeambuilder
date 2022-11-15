@@ -14,8 +14,8 @@ export class PokemonCard  {
   @State() japaneseName : string
 
   componentWillLoad(){
+    console.log(this.pokemon)
     this.pokemon.names.map(jap =>{
-
       if(jap.language.name === "ja"){
         this.japaneseName = jap.name
       }
@@ -35,7 +35,6 @@ export class PokemonCard  {
 
 
   render() {
-    console.log(this.pokemon)
     return (
     <ion-card onClick={() => this.onClickCard(this.name)} button={true} class={this.types + "Bg"}>
       <ion-card-header>

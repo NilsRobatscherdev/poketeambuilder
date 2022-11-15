@@ -7,17 +7,24 @@ import { Component, h } from '@stencil/core';
 export class AppRoot {
 
 
+  renderRouter(){
+    return(
+    <ion-router
+      useHash={false}
+      root={"/"}
+    >
+      <ion-route url="/pokemon/:pokemonId" component="pokemon-detail" />
+      <ion-route url="/pokedex" component="page-pokedex" />
+    </ion-router>
+    )
+  }
+
   render() {
     return (
       <ion-app>
-        <page-header>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route url="/pokemon/:pokemonId" component="pokemon-detail" />
-              <stencil-route url="/pokedex" component="page-pokedex" exact={true} />
-              </stencil-route-switch>
-          </stencil-router>
-        </page-header>
+        <page-header/>
+        {this.renderRouter()}
+        <ion-nav id='main-nav'/>
       </ion-app>
     );
   }
