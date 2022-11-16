@@ -23,8 +23,8 @@ export class PagePokedex {
 
 
   async getPokemons(callback){
-    console.log("awd")
-    PokedexService.getPokedex(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset + 4}?limit=24`).then((pokedex) => {
+    console.log(this.offset)
+    PokedexService.getPokedex(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}?limit=24`).then((pokedex) => {
       pokedex.results.map(pokemonList => {
         PokedexService.getPokedexPokemon(pokemonList.url).then((pokemon) =>{
           this.pokemon = pokemon

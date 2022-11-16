@@ -12,10 +12,11 @@ export class PokemonTypes {
   componentWillLoad(){
     this.imageSrc = getAssetPath(`/assets/types/${this.types}.svg`);
   }
+  
   render() {
     return (
         <img src={this.imageSrc} alt={this.types} />
     );
   }
 
-}
+}  

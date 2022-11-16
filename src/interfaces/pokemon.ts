@@ -1,12 +1,16 @@
 import { Deserializable } from "./deserialize";
 import {IItem} from "./item"
 import {IAbilitie} from "./abilitie"
-import {IMove} from "./move"
+
 
 
 export interface IPokemonForms {
     name:string
     url:string
+}
+export interface IPokemonMoves {
+    move:IPokemonForms
+    version_group_details:[]
 }
 export interface IPokemonTypes {
     slot:number
@@ -22,6 +26,13 @@ export interface ISprites {
     front_shiny:string
     front_shiny_female:string
 }
+
+export interface IStats {
+    base_stat:number
+    effort:number
+    stat:IPokemonForms
+
+}
 export interface INames {
     language:IPokemonForms
     name:string
@@ -33,7 +44,7 @@ export interface IPokemon {
     height?: number,
     id?:number,
     held_items?:IItem[],
-    moves?:IMove[],
+    moves?:[IPokemonMoves],
     sprites?:ISprites,
     is_default?:boolean,
     location_area_encounters?:string,
@@ -43,6 +54,7 @@ export interface IPokemon {
     abilities?:IAbilitie[],
     forms?:[IPokemonForms],
     types?:[IPokemonTypes],
+    stats?:IStats[],
 }
 
 export class Pokemon implements IPokemon, Deserializable {
@@ -58,10 +70,11 @@ export class Pokemon implements IPokemon, Deserializable {
     held_items?:IItem[];
     species?:IPokemonForms;
     names?:[INames];
-    moves?:IMove[];
+    moves?:[IPokemonMoves];
     abilities?:IAbilitie[]
     forms?:[IPokemonForms];
     types?:[IPokemonTypes];
+    stats?:IStats[];
 
     deserialize(input: IPokemon){
         if(input){

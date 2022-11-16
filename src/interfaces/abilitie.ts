@@ -8,13 +8,13 @@ export interface IPokemonAbility {
 export interface IAbilitie {
     is_hidden:boolean,
     slot: number,
-    abilitity: IPokemonAbility,
+    ability: IPokemonAbility,
 }
 
 export class Abilitie implements IAbilitie, Deserializable {
     is_hidden:boolean;
     slot: number;
-    abilitity: IPokemonAbility;
+    ability: IPokemonAbility;
 
 
     deserialize(input: Abilitie){

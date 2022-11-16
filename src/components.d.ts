@@ -6,9 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IPokemon } from "./interfaces/pokemon";
-import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
     interface AppRoot {
+    }
+    interface BerriesCard {
     }
     interface PageFooter {
     }
@@ -18,13 +19,20 @@ export namespace Components {
     }
     interface PagePokedex {
     }
+    interface PokemonAbility {
+        "abilitys": any[];
+    }
+    interface PokemonAttributes {
+        "stat": any;
+    }
     interface PokemonCard {
         "pokemon": IPokemon;
     }
     interface PokemonDetail {
-        "history": RouterHistory;
-        "match": MatchResults;
-        "name": number;
+    }
+    interface PokemonMoves {
+        "moves": any[];
+        "withSearchFunction": boolean;
     }
     interface PokemonTypes {
         "types": any;
@@ -38,6 +46,12 @@ declare global {
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
+    };
+    interface HTMLBerriesCardElement extends Components.BerriesCard, HTMLStencilElement {
+    }
+    var HTMLBerriesCardElement: {
+        prototype: HTMLBerriesCardElement;
+        new (): HTMLBerriesCardElement;
     };
     interface HTMLPageFooterElement extends Components.PageFooter, HTMLStencilElement {
     }
@@ -63,6 +77,18 @@ declare global {
         prototype: HTMLPagePokedexElement;
         new (): HTMLPagePokedexElement;
     };
+    interface HTMLPokemonAbilityElement extends Components.PokemonAbility, HTMLStencilElement {
+    }
+    var HTMLPokemonAbilityElement: {
+        prototype: HTMLPokemonAbilityElement;
+        new (): HTMLPokemonAbilityElement;
+    };
+    interface HTMLPokemonAttributesElement extends Components.PokemonAttributes, HTMLStencilElement {
+    }
+    var HTMLPokemonAttributesElement: {
+        prototype: HTMLPokemonAttributesElement;
+        new (): HTMLPokemonAttributesElement;
+    };
     interface HTMLPokemonCardElement extends Components.PokemonCard, HTMLStencilElement {
     }
     var HTMLPokemonCardElement: {
@@ -74,6 +100,12 @@ declare global {
     var HTMLPokemonDetailElement: {
         prototype: HTMLPokemonDetailElement;
         new (): HTMLPokemonDetailElement;
+    };
+    interface HTMLPokemonMovesElement extends Components.PokemonMoves, HTMLStencilElement {
+    }
+    var HTMLPokemonMovesElement: {
+        prototype: HTMLPokemonMovesElement;
+        new (): HTMLPokemonMovesElement;
     };
     interface HTMLPokemonTypesElement extends Components.PokemonTypes, HTMLStencilElement {
     }
@@ -89,18 +121,24 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
+        "berries-card": HTMLBerriesCardElement;
         "page-footer": HTMLPageFooterElement;
         "page-header": HTMLPageHeaderElement;
         "page-not-found": HTMLPageNotFoundElement;
         "page-pokedex": HTMLPagePokedexElement;
+        "pokemon-ability": HTMLPokemonAbilityElement;
+        "pokemon-attributes": HTMLPokemonAttributesElement;
         "pokemon-card": HTMLPokemonCardElement;
         "pokemon-detail": HTMLPokemonDetailElement;
+        "pokemon-moves": HTMLPokemonMovesElement;
         "pokemon-types": HTMLPokemonTypesElement;
         "search-bar": HTMLSearchBarElement;
     }
 }
 declare namespace LocalJSX {
     interface AppRoot {
+    }
+    interface BerriesCard {
     }
     interface PageFooter {
     }
@@ -110,13 +148,20 @@ declare namespace LocalJSX {
     }
     interface PagePokedex {
     }
+    interface PokemonAbility {
+        "abilitys"?: any[];
+    }
+    interface PokemonAttributes {
+        "stat"?: any;
+    }
     interface PokemonCard {
         "pokemon"?: IPokemon;
     }
     interface PokemonDetail {
-        "history"?: RouterHistory;
-        "match"?: MatchResults;
-        "name"?: number;
+    }
+    interface PokemonMoves {
+        "moves"?: any[];
+        "withSearchFunction"?: boolean;
     }
     interface PokemonTypes {
         "types"?: any;
@@ -125,12 +170,16 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
+        "berries-card": BerriesCard;
         "page-footer": PageFooter;
         "page-header": PageHeader;
         "page-not-found": PageNotFound;
         "page-pokedex": PagePokedex;
+        "pokemon-ability": PokemonAbility;
+        "pokemon-attributes": PokemonAttributes;
         "pokemon-card": PokemonCard;
         "pokemon-detail": PokemonDetail;
+        "pokemon-moves": PokemonMoves;
         "pokemon-types": PokemonTypes;
         "search-bar": SearchBar;
     }
@@ -140,12 +189,16 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "berries-card": LocalJSX.BerriesCard & JSXBase.HTMLAttributes<HTMLBerriesCardElement>;
             "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "page-pokedex": LocalJSX.PagePokedex & JSXBase.HTMLAttributes<HTMLPagePokedexElement>;
+            "pokemon-ability": LocalJSX.PokemonAbility & JSXBase.HTMLAttributes<HTMLPokemonAbilityElement>;
+            "pokemon-attributes": LocalJSX.PokemonAttributes & JSXBase.HTMLAttributes<HTMLPokemonAttributesElement>;
             "pokemon-card": LocalJSX.PokemonCard & JSXBase.HTMLAttributes<HTMLPokemonCardElement>;
             "pokemon-detail": LocalJSX.PokemonDetail & JSXBase.HTMLAttributes<HTMLPokemonDetailElement>;
+            "pokemon-moves": LocalJSX.PokemonMoves & JSXBase.HTMLAttributes<HTMLPokemonMovesElement>;
             "pokemon-types": LocalJSX.PokemonTypes & JSXBase.HTMLAttributes<HTMLPokemonTypesElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
