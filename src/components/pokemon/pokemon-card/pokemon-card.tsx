@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State,Event } from '@stencil/core';
 import { IPokemon } from '../../../interfaces/pokemon';
 
 @Component({
@@ -8,13 +8,17 @@ import { IPokemon } from '../../../interfaces/pokemon';
 export class PokemonCard  {
 
   @Prop() pokemon : IPokemon
+  @Prop() builder = false
+  @Prop() disabled = false
+  @Prop() listExcist = false
   @State() name : string
   @State() id : number
   @State() types : any
   @State() japaneseName : string
+  @Event() sendPokemonBack
+  @Event() deletePokemon
 
   componentWillLoad(){
-    console.log(this.pokemon)
     this.pokemon.names.map(jap =>{
       if(jap.language.name === "ja"){
         this.japaneseName = jap.name
@@ -29,14 +33,23 @@ export class PokemonCard  {
     this.id = this.pokemon.id
   }
 
-  onClickCard(name){
-    location.href = `/pokemon/${name}`;
+  onClickCard(pokemon){
+    if(this.builder){
+      if(this.listExcist){
+        this.deletePokemon.emit(pokemon)
+      }else{
+        this.sendPokemonBack.emit(pokemon)
+      }
+    }else{
+      location.href = `/pokemon/${pokemon.name}`;
+    }
+   
   }
 
 
   render() {
     return (
-    <ion-card onClick={() => this.onClickCard(this.name)} button={true} class={this.types + "Bg"}>
+    <ion-card disabled={this.disabled} onClick={() => this.onClickCard(this.pokemon)} button={true} class={this.types + "Bg"}>
       <ion-card-header>
       <div class={"types"}>
       {

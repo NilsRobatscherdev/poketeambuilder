@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, getAssetPath } from '@stencil/core';
+import { Component, h, Prop, State, getAssetPath } from '@stencil/core';
 
 @Component({
   tag: 'pokemon-types',

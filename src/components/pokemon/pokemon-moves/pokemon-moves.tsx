@@ -1,7 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
 
-
-
 @Component({
   tag: 'pokemon-moves',
   styleUrl: 'pokemon-moves.scss',

@@ -17,7 +17,19 @@ export namespace Components {
     }
     interface PageNotFound {
     }
+    interface PagePokebuilder {
+    }
     interface PagePokedex {
+    }
+    interface PokebuilderDetail {
+        "pokemonList": any[];
+    }
+    interface PokebuilderPokegrid {
+        "builder": boolean;
+        "pokemon": IPokemon;
+        "pokemonDelete": IPokemon;
+        "pokemonList": any[];
+        "seeDetails": boolean;
     }
     interface PokemonAbility {
         "abilitys": any[];
@@ -26,6 +38,9 @@ export namespace Components {
         "stat": any;
     }
     interface PokemonCard {
+        "builder": boolean;
+        "disabled": boolean;
+        "listExcist": boolean;
         "pokemon": IPokemon;
     }
     interface PokemonDetail {
@@ -34,11 +49,27 @@ export namespace Components {
         "moves": any[];
         "withSearchFunction": boolean;
     }
+    interface PokemonPokedex {
+        "builder": boolean;
+        "disabled": boolean;
+    }
     interface PokemonTypes {
         "types": any;
     }
     interface SearchBar {
     }
+}
+export interface PokebuilderPokegridCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPokebuilderPokegridElement;
+}
+export interface PokemonCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPokemonCardElement;
+}
+export interface PokemonPokedexCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPokemonPokedexElement;
 }
 declare global {
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
@@ -71,11 +102,29 @@ declare global {
         prototype: HTMLPageNotFoundElement;
         new (): HTMLPageNotFoundElement;
     };
+    interface HTMLPagePokebuilderElement extends Components.PagePokebuilder, HTMLStencilElement {
+    }
+    var HTMLPagePokebuilderElement: {
+        prototype: HTMLPagePokebuilderElement;
+        new (): HTMLPagePokebuilderElement;
+    };
     interface HTMLPagePokedexElement extends Components.PagePokedex, HTMLStencilElement {
     }
     var HTMLPagePokedexElement: {
         prototype: HTMLPagePokedexElement;
         new (): HTMLPagePokedexElement;
+    };
+    interface HTMLPokebuilderDetailElement extends Components.PokebuilderDetail, HTMLStencilElement {
+    }
+    var HTMLPokebuilderDetailElement: {
+        prototype: HTMLPokebuilderDetailElement;
+        new (): HTMLPokebuilderDetailElement;
+    };
+    interface HTMLPokebuilderPokegridElement extends Components.PokebuilderPokegrid, HTMLStencilElement {
+    }
+    var HTMLPokebuilderPokegridElement: {
+        prototype: HTMLPokebuilderPokegridElement;
+        new (): HTMLPokebuilderPokegridElement;
     };
     interface HTMLPokemonAbilityElement extends Components.PokemonAbility, HTMLStencilElement {
     }
@@ -107,6 +156,12 @@ declare global {
         prototype: HTMLPokemonMovesElement;
         new (): HTMLPokemonMovesElement;
     };
+    interface HTMLPokemonPokedexElement extends Components.PokemonPokedex, HTMLStencilElement {
+    }
+    var HTMLPokemonPokedexElement: {
+        prototype: HTMLPokemonPokedexElement;
+        new (): HTMLPokemonPokedexElement;
+    };
     interface HTMLPokemonTypesElement extends Components.PokemonTypes, HTMLStencilElement {
     }
     var HTMLPokemonTypesElement: {
@@ -125,12 +180,16 @@ declare global {
         "page-footer": HTMLPageFooterElement;
         "page-header": HTMLPageHeaderElement;
         "page-not-found": HTMLPageNotFoundElement;
+        "page-pokebuilder": HTMLPagePokebuilderElement;
         "page-pokedex": HTMLPagePokedexElement;
+        "pokebuilder-detail": HTMLPokebuilderDetailElement;
+        "pokebuilder-pokegrid": HTMLPokebuilderPokegridElement;
         "pokemon-ability": HTMLPokemonAbilityElement;
         "pokemon-attributes": HTMLPokemonAttributesElement;
         "pokemon-card": HTMLPokemonCardElement;
         "pokemon-detail": HTMLPokemonDetailElement;
         "pokemon-moves": HTMLPokemonMovesElement;
+        "pokemon-pokedex": HTMLPokemonPokedexElement;
         "pokemon-types": HTMLPokemonTypesElement;
         "search-bar": HTMLSearchBarElement;
     }
@@ -146,7 +205,20 @@ declare namespace LocalJSX {
     }
     interface PageNotFound {
     }
+    interface PagePokebuilder {
+    }
     interface PagePokedex {
+    }
+    interface PokebuilderDetail {
+        "pokemonList"?: any[];
+    }
+    interface PokebuilderPokegrid {
+        "builder"?: boolean;
+        "onTooMuch"?: (event: PokebuilderPokegridCustomEvent<any>) => void;
+        "pokemon"?: IPokemon;
+        "pokemonDelete"?: IPokemon;
+        "pokemonList"?: any[];
+        "seeDetails"?: boolean;
     }
     interface PokemonAbility {
         "abilitys"?: any[];
@@ -155,6 +227,11 @@ declare namespace LocalJSX {
         "stat"?: any;
     }
     interface PokemonCard {
+        "builder"?: boolean;
+        "disabled"?: boolean;
+        "listExcist"?: boolean;
+        "onDeletePokemon"?: (event: PokemonCardCustomEvent<any>) => void;
+        "onSendPokemonBack"?: (event: PokemonCardCustomEvent<any>) => void;
         "pokemon"?: IPokemon;
     }
     interface PokemonDetail {
@@ -162,6 +239,12 @@ declare namespace LocalJSX {
     interface PokemonMoves {
         "moves"?: any[];
         "withSearchFunction"?: boolean;
+    }
+    interface PokemonPokedex {
+        "builder"?: boolean;
+        "disabled"?: boolean;
+        "onDeletePokemon"?: (event: PokemonPokedexCustomEvent<any>) => void;
+        "onSendPokemonBack"?: (event: PokemonPokedexCustomEvent<any>) => void;
     }
     interface PokemonTypes {
         "types"?: any;
@@ -174,12 +257,16 @@ declare namespace LocalJSX {
         "page-footer": PageFooter;
         "page-header": PageHeader;
         "page-not-found": PageNotFound;
+        "page-pokebuilder": PagePokebuilder;
         "page-pokedex": PagePokedex;
+        "pokebuilder-detail": PokebuilderDetail;
+        "pokebuilder-pokegrid": PokebuilderPokegrid;
         "pokemon-ability": PokemonAbility;
         "pokemon-attributes": PokemonAttributes;
         "pokemon-card": PokemonCard;
         "pokemon-detail": PokemonDetail;
         "pokemon-moves": PokemonMoves;
+        "pokemon-pokedex": PokemonPokedex;
         "pokemon-types": PokemonTypes;
         "search-bar": SearchBar;
     }
@@ -193,12 +280,16 @@ declare module "@stencil/core" {
             "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
+            "page-pokebuilder": LocalJSX.PagePokebuilder & JSXBase.HTMLAttributes<HTMLPagePokebuilderElement>;
             "page-pokedex": LocalJSX.PagePokedex & JSXBase.HTMLAttributes<HTMLPagePokedexElement>;
+            "pokebuilder-detail": LocalJSX.PokebuilderDetail & JSXBase.HTMLAttributes<HTMLPokebuilderDetailElement>;
+            "pokebuilder-pokegrid": LocalJSX.PokebuilderPokegrid & JSXBase.HTMLAttributes<HTMLPokebuilderPokegridElement>;
             "pokemon-ability": LocalJSX.PokemonAbility & JSXBase.HTMLAttributes<HTMLPokemonAbilityElement>;
             "pokemon-attributes": LocalJSX.PokemonAttributes & JSXBase.HTMLAttributes<HTMLPokemonAttributesElement>;
             "pokemon-card": LocalJSX.PokemonCard & JSXBase.HTMLAttributes<HTMLPokemonCardElement>;
             "pokemon-detail": LocalJSX.PokemonDetail & JSXBase.HTMLAttributes<HTMLPokemonDetailElement>;
             "pokemon-moves": LocalJSX.PokemonMoves & JSXBase.HTMLAttributes<HTMLPokemonMovesElement>;
+            "pokemon-pokedex": LocalJSX.PokemonPokedex & JSXBase.HTMLAttributes<HTMLPokemonPokedexElement>;
             "pokemon-types": LocalJSX.PokemonTypes & JSXBase.HTMLAttributes<HTMLPokemonTypesElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }

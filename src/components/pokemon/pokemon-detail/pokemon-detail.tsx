@@ -19,7 +19,6 @@ export class PokemonDetail {
     this.getPokemonFromUrl()
     PokedexService.getPokedexPokemon(`https://pokeapi.co/api/v2/pokemon/${this.nameUrl}`).then((pokemon) => {
       this.pokemon = pokemon
-      console.log(this.pokemon)
       this.pokemon.moves.map(moves => {
         this.getPokemonMoves(moves.move.url)
       })
