@@ -38,7 +38,7 @@ export abstract class RestService{
 
 
     public read(url,data?):Observable<any>{
-        console.log(url)
+    
         return this.fetch(this.request(url,"GET",data))
     }
 

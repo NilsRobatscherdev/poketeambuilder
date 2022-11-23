@@ -16,7 +16,7 @@ export class AppRoot {
       <ion-route url="/pokemon/:pokemonId" component="pokemon-detail" />
       <ion-route url="/pokedex" component="page-pokedex" />
       <ion-route url="/pokebuilder" component="page-pokebuilder" />
-      <ion-route url="/pokebuilder/detail" component="pokebuilder-detail" />
+      <ion-route url="/pokebuilder/team" component="pokebuilder-team" />
     </ion-router>
     )
   }

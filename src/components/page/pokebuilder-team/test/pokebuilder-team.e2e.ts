@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('pokebuilder-detail', () => {
+describe('pokebuilder-team', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<pokebuilder-detail></pokebuilder-detail>');
+    await page.setContent('<pokebuilder-team></pokebuilder-team>');
 
-    const element = await page.find('pokebuilder-detail');
+    const element = await page.find('pokebuilder-team');
     expect(element).toHaveClass('hydrated');
   });
 });

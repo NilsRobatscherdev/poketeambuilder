@@ -18,9 +18,22 @@ ion-card{
           padding: 0 5px
         }
     }
-    ion-card-subtitle{
-      color: white;
+    .id-wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      ion-card-subtitle{
+        color: white;
+      }
+      ion-buttons{
+        ion-button{
+          ion-icon{
+            color: white !important;
+          }
+        }
+      }
     }
+
   }
 ion-card-content{
   display: flex;

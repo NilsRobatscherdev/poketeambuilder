@@ -21,15 +21,14 @@ export namespace Components {
     }
     interface PagePokedex {
     }
-    interface PokebuilderDetail {
-        "pokemonList": any[];
-    }
     interface PokebuilderPokegrid {
         "builder": boolean;
         "pokemon": IPokemon;
         "pokemonDelete": IPokemon;
-        "pokemonList": any[];
+        "pokemonList": IPokemon[];
         "seeDetails": boolean;
+    }
+    interface PokebuilderTeam {
     }
     interface PokemonAbility {
         "abilitys": any[];
@@ -114,17 +113,17 @@ declare global {
         prototype: HTMLPagePokedexElement;
         new (): HTMLPagePokedexElement;
     };
-    interface HTMLPokebuilderDetailElement extends Components.PokebuilderDetail, HTMLStencilElement {
-    }
-    var HTMLPokebuilderDetailElement: {
-        prototype: HTMLPokebuilderDetailElement;
-        new (): HTMLPokebuilderDetailElement;
-    };
     interface HTMLPokebuilderPokegridElement extends Components.PokebuilderPokegrid, HTMLStencilElement {
     }
     var HTMLPokebuilderPokegridElement: {
         prototype: HTMLPokebuilderPokegridElement;
         new (): HTMLPokebuilderPokegridElement;
+    };
+    interface HTMLPokebuilderTeamElement extends Components.PokebuilderTeam, HTMLStencilElement {
+    }
+    var HTMLPokebuilderTeamElement: {
+        prototype: HTMLPokebuilderTeamElement;
+        new (): HTMLPokebuilderTeamElement;
     };
     interface HTMLPokemonAbilityElement extends Components.PokemonAbility, HTMLStencilElement {
     }
@@ -182,8 +181,8 @@ declare global {
         "page-not-found": HTMLPageNotFoundElement;
         "page-pokebuilder": HTMLPagePokebuilderElement;
         "page-pokedex": HTMLPagePokedexElement;
-        "pokebuilder-detail": HTMLPokebuilderDetailElement;
         "pokebuilder-pokegrid": HTMLPokebuilderPokegridElement;
+        "pokebuilder-team": HTMLPokebuilderTeamElement;
         "pokemon-ability": HTMLPokemonAbilityElement;
         "pokemon-attributes": HTMLPokemonAttributesElement;
         "pokemon-card": HTMLPokemonCardElement;
@@ -209,16 +208,15 @@ declare namespace LocalJSX {
     }
     interface PagePokedex {
     }
-    interface PokebuilderDetail {
-        "pokemonList"?: any[];
-    }
     interface PokebuilderPokegrid {
         "builder"?: boolean;
         "onTooMuch"?: (event: PokebuilderPokegridCustomEvent<any>) => void;
         "pokemon"?: IPokemon;
         "pokemonDelete"?: IPokemon;
-        "pokemonList"?: any[];
+        "pokemonList"?: IPokemon[];
         "seeDetails"?: boolean;
+    }
+    interface PokebuilderTeam {
     }
     interface PokemonAbility {
         "abilitys"?: any[];
@@ -259,8 +257,8 @@ declare namespace LocalJSX {
         "page-not-found": PageNotFound;
         "page-pokebuilder": PagePokebuilder;
         "page-pokedex": PagePokedex;
-        "pokebuilder-detail": PokebuilderDetail;
         "pokebuilder-pokegrid": PokebuilderPokegrid;
+        "pokebuilder-team": PokebuilderTeam;
         "pokemon-ability": PokemonAbility;
         "pokemon-attributes": PokemonAttributes;
         "pokemon-card": PokemonCard;
@@ -282,8 +280,8 @@ declare module "@stencil/core" {
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "page-pokebuilder": LocalJSX.PagePokebuilder & JSXBase.HTMLAttributes<HTMLPagePokebuilderElement>;
             "page-pokedex": LocalJSX.PagePokedex & JSXBase.HTMLAttributes<HTMLPagePokedexElement>;
-            "pokebuilder-detail": LocalJSX.PokebuilderDetail & JSXBase.HTMLAttributes<HTMLPokebuilderDetailElement>;
             "pokebuilder-pokegrid": LocalJSX.PokebuilderPokegrid & JSXBase.HTMLAttributes<HTMLPokebuilderPokegridElement>;
+            "pokebuilder-team": LocalJSX.PokebuilderTeam & JSXBase.HTMLAttributes<HTMLPokebuilderTeamElement>;
             "pokemon-ability": LocalJSX.PokemonAbility & JSXBase.HTMLAttributes<HTMLPokemonAbilityElement>;
             "pokemon-attributes": LocalJSX.PokemonAttributes & JSXBase.HTMLAttributes<HTMLPokemonAttributesElement>;
             "pokemon-card": LocalJSX.PokemonCard & JSXBase.HTMLAttributes<HTMLPokemonCardElement>;

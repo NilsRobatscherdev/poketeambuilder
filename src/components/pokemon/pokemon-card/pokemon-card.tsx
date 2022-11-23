@@ -35,15 +35,14 @@ export class PokemonCard  {
 
   onClickCard(pokemon){
     if(this.builder){
-      if(this.listExcist){
-        this.deletePokemon.emit(pokemon)
-      }else{
         this.sendPokemonBack.emit(pokemon)
-      }
     }else{
       location.href = `/pokemon/${pokemon.name}`;
     }
    
+  }
+  onDelete(pokemom){
+    this.deletePokemon.emit(pokemom)
   }
 
 
@@ -60,7 +59,20 @@ export class PokemonCard  {
             })
         }
       </div>
-        <ion-card-subtitle>{this.id}</ion-card-subtitle>
+      <div class="id-wrapper">
+      <ion-card-subtitle>{this.id}</ion-card-subtitle>
+          {
+            this.listExcist &&   
+            <ion-buttons>
+              <ion-button onClick={() => this.onDelete(this.pokemon)}>
+                <ion-icon color='white' name="trash"></ion-icon>
+              </ion-button>
+          </ion-buttons>
+           
+          }
+      </div>
+
+        
       </ion-card-header>
       <ion-card-content>
         <img src={this.pokemon.sprites.front_default} alt="" />
