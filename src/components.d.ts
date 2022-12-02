@@ -29,6 +29,7 @@ export namespace Components {
         "seeDetails": boolean;
     }
     interface PokebuilderTeam {
+        "poketeam": IPokemon[];
     }
     interface PokemonAbility {
         "abilitys": any[];
@@ -217,6 +218,7 @@ declare namespace LocalJSX {
         "seeDetails"?: boolean;
     }
     interface PokebuilderTeam {
+        "poketeam"?: IPokemon[];
     }
     interface PokemonAbility {
         "abilitys"?: any[];

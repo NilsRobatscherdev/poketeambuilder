@@ -11,6 +11,8 @@ export class PokemonDetail {
   @State() nameUrl: string
   @State() types : any
   @State() pokemon: IPokemon = new Pokemon()
+  @State() pokemonBefore: IPokemon = new Pokemon()
+  @State() pokemonAfter: IPokemon = new Pokemon()
   @State() moves = []
   @State() move: IMove
   @State() abilitys = []
@@ -19,6 +21,8 @@ export class PokemonDetail {
     this.getPokemonFromUrl()
     PokedexService.getPokedexPokemon(`https://pokeapi.co/api/v2/pokemon/${this.nameUrl}`).then((pokemon) => {
       this.pokemon = pokemon
+      this.getPokemonBefor(this.pokemon.id)
+      this.getPokemonAfter(this.pokemon.id)
       this.pokemon.moves.map(moves => {
         this.getPokemonMoves(moves.move.url)
       })
@@ -26,6 +30,29 @@ export class PokemonDetail {
         this.getPokemonAbilitys(ability.ability.url)
       })
     })
+
+
+
+    PokedexService.getPokedexPokemon(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`).then((pokemons) =>{
+      console.log(pokemons)
+    })
+  }
+
+  getPokemonBefor(pokemonId){
+    let id = pokemonId - 1
+    if(id !== 0){
+      PokedexService.getPokedexPokemon(`https://pokeapi.co/api/v2/pokemon/${id}`).then((pokemon) =>{
+        this.pokemonBefore = pokemon
+      })
+    }
+  }
+  getPokemonAfter(pokemonId){
+    let id = pokemonId + 1
+    if(id !== 0){
+      PokedexService.getPokedexPokemon(`https://pokeapi.co/api/v2/pokemon/${id}`).then((pokemon) =>{
+        this.pokemonAfter = pokemon
+      })
+    }
   }
   getPokemonFromUrl(){
     const locationHref = location.href;
@@ -44,6 +71,7 @@ export class PokemonDetail {
     })
   }
   render() {
+    console.log(this.pokemonAfter)
     return (
       <ion-content>
         <div class='header'>
@@ -67,6 +95,20 @@ export class PokemonDetail {
         )}
         <pokemon-moves withSearchFunction={true} moves={this.moves}>
         </pokemon-moves>
+      </div>
+      <div class="footer">
+        <div>
+          <a href={this.pokemonBefore?.name}>
+            <img src={this.pokemonBefore?.sprites?.front_default}  alt={this.pokemonBefore?.name} />
+          </a>
+          
+        </div>
+        <div>
+          <a href={this.pokemonAfter?.name}>
+            <img src={this.pokemonAfter?.sprites?.front_default}  alt={this.pokemonAfter?.name} />
+          </a>
+        </div>
+          
       </div>
       </ion-content>
     );
