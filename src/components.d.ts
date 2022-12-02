@@ -67,6 +67,10 @@ export interface PokemonCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPokemonCardElement;
 }
+export interface PokemonMovesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPokemonMovesElement;
+}
 export interface PokemonPokedexCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPokemonPokedexElement;
@@ -238,6 +242,8 @@ declare namespace LocalJSX {
     }
     interface PokemonMoves {
         "moves"?: any[];
+        "onSearch"?: (event: PokemonMovesCustomEvent<any>) => void;
+        "onSearchClear"?: (event: PokemonMovesCustomEvent<any>) => void;
         "withSearchFunction"?: boolean;
     }
     interface PokemonPokedex {

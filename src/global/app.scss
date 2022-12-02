@@ -123,3 +123,59 @@ body {
 .fightFont{
   color: #E0306A;
 }
+
+
+.waterFilter{
+  filter: invert(26%) sepia(83%) saturate(1039%) hue-rotate(189deg) brightness(87%) contrast(90%);
+}
+.fireFilter{
+  filter: invert(69%) sepia(85%) saturate(1424%) hue-rotate(328deg) brightness(101%) contrast(101%);
+}
+.grassFilter{
+  filter: invert(84%) sepia(7%) saturate(3158%) hue-rotate(71deg) brightness(84%) contrast(85%);
+}
+.flyingFilter{
+  filter: invert(71%) sepia(8%) saturate(1895%) hue-rotate(182deg) brightness(94%) contrast(89%);
+}
+.poisonFilter{
+  filter: invert(60%) sepia(44%) saturate(2953%) hue-rotate(233deg) brightness(84%) contrast(90%);
+}
+.ghostFilter{
+  filter: invert(43%) sepia(14%) saturate(1822%) hue-rotate(185deg) brightness(93%) contrast(98%);
+}
+.groundFilter{
+  filter: invert(64%) sepia(57%) saturate(4097%) hue-rotate(339deg) brightness(96%) contrast(89%);
+}
+.rockFilter{
+  filter: invert(92%) sepia(7%) saturate(1676%) hue-rotate(350deg) brightness(81%) contrast(92%);
+}
+.bugFilter{
+  filter: invert(70%) sepia(18%) saturate(4168%) hue-rotate(36deg) brightness(95%) contrast(101%);
+}
+.steelFilter{
+  filter: invert(51%) sepia(60%) saturate(277%) hue-rotate(151deg) brightness(91%) contrast(85%);
+}
+.electricFilter{
+  filter: invert(78%) sepia(78%) saturate(2465%) hue-rotate(7deg) brightness(109%) contrast(100%);
+}
+.psychicFilter{
+  filter: invert(51%) sepia(60%) saturate(917%) hue-rotate(313deg) brightness(101%) contrast(106%);
+}
+.iceFilter{
+  filter: invert(78%) sepia(15%) saturate(1516%) hue-rotate(121deg) brightness(93%) contrast(86%);
+}
+.dragonFilter{
+  filter: invert(28%) sepia(57%) saturate(2112%) hue-rotate(187deg) brightness(101%) contrast(103%);
+}
+.darkFilter{
+  filter: invert(35%) sepia(6%) saturate(1252%) hue-rotate(221deg) brightness(87%) contrast(85%);
+}
+.normalFilter{
+  filter: invert(64%) sepia(1%) saturate(2199%) hue-rotate(167deg) brightness(96%) contrast(85%);
+}
+.fairyFilter{
+  filter: invert(70%) sepia(73%) saturate(1107%) hue-rotate(280deg) brightness(108%) contrast(97%);
+}
+.fightFilter{
+  filter: invert(42%) sepia(55%) saturate(6968%) hue-rotate(322deg) brightness(90%) contrast(94%);
+}

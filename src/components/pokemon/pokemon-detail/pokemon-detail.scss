@@ -1,3 +1,28 @@
-:host {
-  display: block;
+pokemon-detail{
+  ion-content{
+    .header{
+
+    }
+    .footer{
+      ion-grid{
+        ion-row{
+          a{
+            z-index: 10;
+          }
+          #footer-icon{
+            position: absolute;
+            width: 150px;
+            height: 150px;
+          }
+          .left-item{
+            display: flex;
+          }
+          .right-item{
+            display: flex;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
 }

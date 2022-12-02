@@ -1,22 +1,57 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, State,Prop,Event,EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'pokemon-moves',
   styleUrl: 'pokemon-moves.scss',
 })
-export class PokemonMoves {
+export class PokemonMoves  {
   @Prop() moves = []
+  @State() movesList = []
   @Prop() withSearchFunction = false
+  @Event() search: EventEmitter
+  @Event() searchClear: EventEmitter
 
+  private searchbar : HTMLIonSearchbarElement
+
+  componentWillLoad(){
+    this.movesList = this.moves
+    this.movesList = [...this.movesList]
+    console.log(this.moves)
+  }
+  
+
+  onSearch(event){
+    console.log(event)
+    this.movesList = []
+    this.moves.map(item => {
+      if(item.name.includes(event.detail.value)){
+        this.moves = []
+ 
+        this.movesList.push(item)
+        console.log(item)
+        this.movesList = [...this.movesList]
+      }
+    })
+  }
+
+  onSearchClear(event){
+   event.preventDefault()
+   this.movesList = this.moves
+   this.movesList=[...this.movesList]
+  }
   render() {
     return (
         <ion-grid>
           {
             this.withSearchFunction && 
-              <search-bar></search-bar>
+              <ion-searchbar ref={ref => this.searchbar = ref}
+                          onIonChange={(event) => this.onSearch(event)}
+                          onIonClear={(event) => this.onSearchClear(event)}>
+
+              </ion-searchbar>
           }
           <ion-row>
-          {this.moves.map(move =>{
+          {this.movesList.map(move =>{
           return [
             <ion-col size="6" size-sm="3">
               <ion-card>

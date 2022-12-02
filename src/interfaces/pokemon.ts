@@ -55,6 +55,7 @@ export interface IPokemon {
     forms?:[IPokemonForms],
     types?:[IPokemonTypes],
     stats?:IStats[],
+    delete?:boolean,
 }
 
 export class Pokemon implements IPokemon, Deserializable {
@@ -75,6 +76,7 @@ export class Pokemon implements IPokemon, Deserializable {
     forms?:[IPokemonForms];
     types?:[IPokemonTypes];
     stats?:IStats[];
+    delete?:boolean;
 
     deserialize(input: IPokemon){
         if(input){

@@ -14,6 +14,7 @@ export class PokemonDetail {
   @State() pokemonBefore: IPokemon = new Pokemon()
   @State() pokemonAfter: IPokemon = new Pokemon()
   @State() moves = []
+  
   @State() move: IMove
   @State() abilitys = []
   @State() ability: IAbilitie
@@ -62,14 +63,14 @@ export class PokemonDetail {
     PokedexService.getPokedexPokemon(`${pokemon}`).then((move) => {
      this.move = move
       this.moves.push(...[this.move])
-      this.moves = [...this.moves]
+  
     })
   }
   getPokemonAbilitys(abilities){
     PokedexService.getPokedexPokemon(`${abilities}`).then((ability) => {
      this.ability = ability
       this.abilitys.push(...[this.ability])
-      this.abilitys = [...this.abilitys]
+
     })
   }
   render() {
@@ -83,7 +84,12 @@ export class PokemonDetail {
         <img src={this.pokemon?.sprites?.front_default} alt="" />
 
         {
-          this.pokemon?.types?.map(types => {
+          this.pokemon?.types?.map((types,index) => {
+            if(index === 0){
+              this.types = types.type.name
+            }
+            
+            console.log(this.types)
               return [
                 <pokemon-types types={types.type.name}></pokemon-types>
               ]
@@ -102,18 +108,23 @@ export class PokemonDetail {
         </pokemon-moves>
       </div>
       <div class="footer">
-        <div>
+      <ion-grid>
+      <ion-row>
+        <ion-col size="6" class="left-item">
+        <ion-icon src="/assets/icon/pokeball.svg" id="footer-icon" class={this.types + "Filter"}/>
           <a href={this.pokemonBefore?.name}>
             <img src={this.pokemonBefore?.sprites?.front_default}  alt={this.pokemonBefore?.name} />
           </a>
-          
-        </div>
-        <div>
+        </ion-col>
+        <ion-col size="6" class="right-item">
           <a href={this.pokemonAfter?.name}>
             <img src={this.pokemonAfter?.sprites?.front_default}  alt={this.pokemonAfter?.name} />
           </a>
-        </div>
-          
+          <ion-icon src="/assets/icon/pokeball.svg" id="footer-icon" class={this.types + "Filter"}/>
+        </ion-col>
+
+      </ion-row>
+      </ion-grid>
       </div>
       </ion-content>
     );
