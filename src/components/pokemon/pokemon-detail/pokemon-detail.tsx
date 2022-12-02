@@ -62,16 +62,18 @@ export class PokemonDetail {
     PokedexService.getPokedexPokemon(`${pokemon}`).then((move) => {
      this.move = move
       this.moves.push(...[this.move])
+      this.moves = [...this.moves]
     })
   }
   getPokemonAbilitys(abilities){
     PokedexService.getPokedexPokemon(`${abilities}`).then((ability) => {
      this.ability = ability
       this.abilitys.push(...[this.ability])
+      this.abilitys = [...this.abilitys]
     })
   }
   render() {
-    console.log(this.pokemonAfter)
+    console.log(this.moves)
     return (
       <ion-content>
         <div class='header'>
@@ -93,6 +95,9 @@ export class PokemonDetail {
             return <pokemon-attributes stat={stat}></pokemon-attributes>
           }
         )}
+      
+      
+      
         <pokemon-moves withSearchFunction={true} moves={this.moves}>
         </pokemon-moves>
       </div>
