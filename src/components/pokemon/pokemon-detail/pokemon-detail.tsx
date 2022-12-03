@@ -111,7 +111,7 @@ export class PokemonDetail {
       <ion-grid>
       <ion-row>
         <ion-col size="6" class="left-item">
-        <ion-icon src="/assets/icon/pokeball.svg" id="footer-icon" class={this.types + "Filter"}/>
+        <ion-icon src={`/assets/icon/pokeball/${this.types}.svg`} id="footer-icon"/>
           <a href={this.pokemonBefore?.name}>
             <img src={this.pokemonBefore?.sprites?.front_default}  alt={this.pokemonBefore?.name} />
           </a>
@@ -120,7 +120,7 @@ export class PokemonDetail {
           <a href={this.pokemonAfter?.name}>
             <img src={this.pokemonAfter?.sprites?.front_default}  alt={this.pokemonAfter?.name} />
           </a>
-          <ion-icon src="/assets/icon/pokeball.svg" id="footer-icon" class={this.types + "Filter"}/>
+          <ion-icon src={`/assets/icon/pokeball/${this.types}.svg`} id="footer-icon"/>
         </ion-col>
 
       </ion-row>
