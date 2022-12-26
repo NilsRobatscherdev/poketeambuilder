@@ -4,6 +4,9 @@ pokemon-detail{
 
     }
     .footer{
+      position: absolute;
+      width: 100%;
+      transform: translateY(30px);
       ion-grid{
         ion-row{
           a{
@@ -16,10 +19,30 @@ pokemon-detail{
           }
           .left-item{
             display: flex;
+            ion-icon{
+              transform: translate(-50px, 20px);
+            }
+            a{
+              position: absolute;
+              img{
+                width: 180px;
+                transform: translateX(-20px);
+              }
+            }
           }
           .right-item{
             display: flex;
             justify-content: flex-end;
+            ion-icon{
+              transform: translate(50px, 20px);
+            }
+            a{
+              position: absolute;
+              img{
+                width: 180px;
+                transform: translateX(20px);
+              }
+            }
           }
         }
       }

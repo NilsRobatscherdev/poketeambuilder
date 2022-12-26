@@ -35,7 +35,9 @@ export namespace Components {
         "abilitys": any[];
     }
     interface PokemonAttributes {
+        "progressbarAllowed": boolean;
         "stat": any;
+        "types": any;
     }
     interface PokemonCard {
         "builder": boolean;
@@ -228,7 +230,9 @@ declare namespace LocalJSX {
         "abilitys"?: any[];
     }
     interface PokemonAttributes {
+        "progressbarAllowed"?: boolean;
         "stat"?: any;
+        "types"?: any;
     }
     interface PokemonCard {
         "builder"?: boolean;

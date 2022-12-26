@@ -1,3 +1,10 @@
-:host {
-  display: block;
+pokemon-attributes{
+  .progressbar{
+    background-color: white;
+    border-radius: 10px;
+    #progress{
+      height: 16px;
+      border-radius: 10px;
+    }
+  }
 }

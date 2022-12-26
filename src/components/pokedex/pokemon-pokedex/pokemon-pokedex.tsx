@@ -18,11 +18,12 @@ export class PokemonPokedex {
   @Event() deletePokemon
   private infiniteScroll: HTMLIonInfiniteScrollElement
   private offset = 0
+  private limit = 24
   async componentWillLoad(){
-    await this.getPokemons(true)
+    await this.getPokemons()
   }
-  async getPokemons(callback){
-    PokedexService.getPokedex(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}?limit=24`).then((pokedex) => {
+  async getPokemons(){
+    PokedexService.getPokedex(`https://pokeapi.co/api/v2/pokemon/?offset=${this.offset}?limit=${this.limit}`).then((pokedex) => {
       pokedex.results.map(pokemonList => {
         PokedexService.getPokedexPokemon(pokemonList.url).then((pokemon) =>{
           this.pokemon = pokemon
@@ -34,9 +35,22 @@ export class PokemonPokedex {
       })
     })
   }
+  async getSearchPokemon(text){
+    PokedexService.getPokedex(`https://pokeapi.co/api/v2/pokemon`).then((pokedex) => {
+      pokedex.results.map(pokemonList => {
+        console.log()
+        if(pokemonList.name.includes(text)){
+          PokedexService.getPokedexPokemon(pokemonList.url).then((pokemon) =>{
+              console.log(pokemon)
+          })
+        }
+      })
+    })
+  }
+
   onMore(callback?){
       this.offset = this.pokedex.pokemons.length
-      this.getPokemons(callback)
+      this.getPokemons()
   }
   infiniteScrollHandler = async (event: any) => {
     await this.onMore(() => {
@@ -45,7 +59,14 @@ export class PokemonPokedex {
   }
 
   sendBack(pokemon){
+    
     this.sendPokemonBack.emit(pokemon.detail)
+  }
+
+  search(ev){
+    this.offset = this.pokedex.pokemons.length
+    console.log(ev)
+    this.getSearchPokemon(ev.detail.data)
   }
 
   deletePokemonFromList(pokemon){
@@ -55,7 +76,7 @@ export class PokemonPokedex {
   render() {
     return (
       <ion-content>
-          <search-bar></search-bar>
+          <ion-searchbar onIonInput={(ev) => this.search(ev)}></ion-searchbar>
         <ion-grid>
           <ion-row>
               {
