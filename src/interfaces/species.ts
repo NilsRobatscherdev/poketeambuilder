@@ -1,4 +1,5 @@
 import { Deserializable } from "./deserialize";
+import { IPokemonForms } from "./pokemon";
 
 
 export interface ISpeciesNameAndUrl {
@@ -10,9 +11,15 @@ export interface ISpeciesVarieties {
     pokemon:ISpeciesNameAndUrl
 }
 
+export interface INames {
+    language:IPokemonForms
+    name:string
+}
+
 export interface ISpecies {
     id:number,
     name: string,
+    names?:[INames];
     capture_rate: number,
     hatch_counter:number,
     base_happiness:number,
@@ -24,6 +31,7 @@ export interface ISpecies {
 export class Species implements ISpecies, Deserializable {
     id:number;
     name: string;
+    names?:[INames];
     capture_rate: number;
     hatch_counter:number;
     base_happiness:number;

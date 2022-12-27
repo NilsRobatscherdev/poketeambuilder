@@ -5,9 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IBattleConditions } from "./interfaces/battle-conditions";
 import { IPokemon } from "./interfaces/pokemon";
 export namespace Components {
     interface AppRoot {
+    }
+    interface BattleConditions {
+        "data": IBattleConditions;
     }
     interface BerriesCard {
     }
@@ -83,6 +87,12 @@ declare global {
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
+    };
+    interface HTMLBattleConditionsElement extends Components.BattleConditions, HTMLStencilElement {
+    }
+    var HTMLBattleConditionsElement: {
+        prototype: HTMLBattleConditionsElement;
+        new (): HTMLBattleConditionsElement;
     };
     interface HTMLBerriesCardElement extends Components.BerriesCard, HTMLStencilElement {
     }
@@ -182,6 +192,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
+        "battle-conditions": HTMLBattleConditionsElement;
         "berries-card": HTMLBerriesCardElement;
         "page-footer": HTMLPageFooterElement;
         "page-header": HTMLPageHeaderElement;
@@ -202,6 +213,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AppRoot {
+    }
+    interface BattleConditions {
+        "data"?: IBattleConditions;
     }
     interface BerriesCard {
     }
@@ -263,6 +277,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
+        "battle-conditions": BattleConditions;
         "berries-card": BerriesCard;
         "page-footer": PageFooter;
         "page-header": PageHeader;
@@ -286,6 +301,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "battle-conditions": LocalJSX.BattleConditions & JSXBase.HTMLAttributes<HTMLBattleConditionsElement>;
             "berries-card": LocalJSX.BerriesCard & JSXBase.HTMLAttributes<HTMLBerriesCardElement>;
             "page-footer": LocalJSX.PageFooter & JSXBase.HTMLAttributes<HTMLPageFooterElement>;
             "page-header": LocalJSX.PageHeader & JSXBase.HTMLAttributes<HTMLPageHeaderElement>;

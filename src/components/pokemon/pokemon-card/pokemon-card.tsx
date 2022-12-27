@@ -35,7 +35,6 @@ export class PokemonCard  {
   }
 
   onClickCard(pokemon){
-    console.log(this.builder)
       if(this.builder){
           this.sendPokemonBack.emit(pokemon)
       }else{

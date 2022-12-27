@@ -1,7 +1,71 @@
 pokemon-detail{
   ion-content{
-    .header{
-
+    #header{
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .header-headercontent{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .types{
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 25px;
+          width: 60px;
+          height: 30px;
+          padding: 0px 5px;
+          pokemon-types{
+            padding: 3px;
+            img{
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+      img{
+        width: 205px;
+      }
+      .header-names{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .content{
+      ion-grid{
+        ion-row{
+          ion-col{
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      .toggleMoves{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 30px 15px;
+        ion-chip{
+          background:none;
+          width:60px;
+          text-align: center;
+          margin: 0 5px ;
+          display: flex;
+          justify-content: center;
+          border: 2px solid grey;
+          color: gray;
+          &.active{
+            color: black;
+            border: 2px solid black;
+          }
+        }
+      }
     }
     .footer{
       position: absolute;

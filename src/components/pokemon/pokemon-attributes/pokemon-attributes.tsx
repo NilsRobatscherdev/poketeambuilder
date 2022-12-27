@@ -21,21 +21,21 @@ export class PokemonAttributes {
 
   componentWillLoad(){    
       if(this.stat.stat.name === "hp"){
-        this.value = this.stat.base_stat % this.hp
+        this.value = this.stat.base_stat / this.hp * 100
       }else if(this.stat.stat.name === "attack"){
-        this.value = this.stat.base_stat % this.atk
+        this.value = this.stat.base_stat / this.atk * 100
       }
       else if(this.stat.stat.name === "defense"){
-        this.value = this.stat.base_stat % this.def
+        this.value = this.stat.base_stat / this.def* 100
       }
       else if(this.stat.stat.name === "special-attack"){
-        this.value = this.stat.base_stat % this.sp_atk
+        this.value = this.stat.base_stat / this.sp_atk* 100
       }
       else if(this.stat.stat.name === "special-defense"){
-        this.value = this.stat.base_stat % this.sp_def
+        this.value = this.stat.base_stat / this.sp_def* 100
       }
       else if(this.stat.stat.name === "speed"){
-        this.value = this.stat.base_stat % this.speed
+        this.value = this.stat.base_stat / this.speed* 100
       }
   }
   render() {
@@ -52,7 +52,7 @@ export class PokemonAttributes {
               this.progressbarAllowed &&
               <ion-col>
                 <div class="progressbar">
-                  <div style={{width:this.value + "px"}} id="progress" class={this.types + "Bg"}></div>
+                  <div style={{width:this.value + "%"}} id="progress" class={this.types + "Bg"}></div>
                 </div>  
               </ion-col>
             }
